@@ -12,6 +12,7 @@ const red = document.querySelector('.red');
 const green = document.querySelector('.green');
 const yellow = document.querySelector('.yellow');
 
+//Cria order aleatória de cores
 let shuffleOrder = () => {
     let colorOrder = Math.floor(Math.random() * 4);
     order[order.length] = colorOrder;
@@ -24,6 +25,7 @@ let shuffleOrder = () => {
     }
 }
 
+//Acende a próxima cor
 let lightColor = (element, number) => {
     number = number * 500;
     setTimeout(() => {
@@ -34,3 +36,21 @@ let lightColor = (element, number) => {
         element.classList.remove('selected');
     });
 }
+
+//Confere a order clicada pelo jogador
+let checkOrder = () => {
+    for(let i in clickedOrder)
+    {
+        if(clickedOrder[i] != order[i])
+        {
+            lose();
+            break;
+        }
+    }
+    if(clickedOrder.length == order.length)
+    {
+        alert('Pontuação: ${score}\nVocê acertou! Iniciando próximo nível!');
+        nextLevel();
+    }
+}
+
