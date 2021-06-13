@@ -48,7 +48,9 @@ let checkOrder = () => {
     if(clickedOrder.length == order.length)
     {
         alert('Pontuação: ' + score + '\nVocê acertou! Iniciando próximo nível!');
-        nextLevel();
+        setTimeout(() => {
+            nextLevel();
+        }, 500);
     }
 }
 
@@ -103,7 +105,9 @@ let playGame = () => {
     alert('Bem vindo ao Genius! Iniciando novo jogo!')
     score = 0;
 
-    nextLevel();
+    setTimeout(() => {
+        nextLevel();
+    }, 500);
 }
 
 green.onclick = () => click(0);
