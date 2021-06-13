@@ -13,24 +13,26 @@ const green = document.querySelector('.green');
 const yellow = document.querySelector('.yellow');
 
 //cria ordem aletoria de cores
-let shuffleOrder = () => {
+async function shuffleOrder() {
     let colorOrder = Math.floor(Math.random() * 4);
     order[order.length] = colorOrder;
     clickedOrder = [];
 
     for(let i in order) {
         let elementColor = createColorElement(order[i]);
-        lightColor(elementColor);
+        await lightColor(elementColor);
     }
 }
 
-//acende a proxima cor
-let lightColor = (element) => {
+//acende a proxima cor e apaga a anterior
+function lightColor(element) {
     element.classList.add('selected');
 
-    setTimeout(() => {
-        element.classList.remove('selected');
-    }, 500);
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(element.classList.remove('selected'));
+        }, 700);
+    });
 }
 
 //Confere a order clicada pelo jogador
